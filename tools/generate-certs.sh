@@ -6,4 +6,4 @@ docker run --rm -it \
   -v $(readlink -f config/proxy/certs):/dehydrated/certs \
   certs-from-rackspace
 
-sudo chown -R $USER.$USER config/proxy/certs
+sudo chown -R $USER.$USER config/proxy/certs/*
