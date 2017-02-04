@@ -9,7 +9,6 @@ RUN git clone https://github.com/lukas2511/dehydrated && \
 ENV PYRAX_CREDS=/dehydrated/.pyrax
 WORKDIR /dehydrated
 
-ADD run .
-RUN chmod +x run
-
-CMD /dehydrated/run
+ADD get-certs.sh .
+RUN chmod +x get-certs.sh
+CMD /dehydrated/get-certs.sh

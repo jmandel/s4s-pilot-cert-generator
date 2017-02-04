@@ -1,1 +1,4 @@
-certs/*
+config/proxy/certs/*
+config/app/*
+config/research-app-api/*
+config/tests/*

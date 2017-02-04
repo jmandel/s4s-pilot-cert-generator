@@ -1,0 +1,58 @@
+version: '2'
+
+services:
+  proxy:
+    image: pixelfordinner/nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/proxy/conf:/etc/nginx/conf.d
+      - ./config/proxy/vhost:/etc/nginx/vhost.d:ro
+      - ./config/proxy/certs:/etc/nginx/certs:ro
+  app:
+    image: syncforscience/reference-app
+    expose: ["5000"]
+    networks:
+     - internal
+    environment:
+     - SYNCHRONIZER_HOST=http://research-app-api
+    volumes:
+     - ./config/app/fixtures.yml:/usr/src/app/researchapp/fixtures.yml
+  api:
+    image: syncforscience/reference-api
+    restart: always
+    volumes:
+     - derby:/hapi/target
+    networks:
+     - internal
+  tests:
+    image: syncforscience/reference-tests
+    expose: ["5000"]
+    networks:
+      - internal
+    volumes:
+      - tests.db:/usr/src/app/testsuite/db
+      - ./config/tests/:/usr/src/app/config
+  research-app-api:
+    image: syncforscience/research-app-api
+    expose: ["5000"]
+    networks:
+     - internal
+    volumes:
+      - research-app.db:/usr/src/app/research_app/db
+      - ./config/research-app-api/providers.yml:/usr/src/app/providers.yml
+    entrypoint: ""
+    command: "./runserver.sh"
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  derby: {}
+  research-app.db: {}
+  tests.db: {}
+  nginx.conf: {}
+  nginx.certs: {}
+  nginx.vhost: {}
