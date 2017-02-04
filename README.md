@@ -59,10 +59,10 @@ These instructions create a directory structure where an `s4s` directory
 contains:
 
  * `secret`
- * `pilot-stack`.
+ * `pilot-prep`.
 
 Sensitive configuration settings are stored one level above the git-controlled
-`pilot-stack` directory.  Within `pilot-stack`, symbolic links point to
+`pilot-prep` directory.  Within `pilot-prep`, symbolic links point to
 sensitive configuration settings at `../secret`.
 
 
@@ -70,8 +70,8 @@ sensitive configuration settings at `../secret`.
 mkdir s4s
 cd s4s
 
-git clone http://github.com/sync-for-science/pilot-stack
-cd pilot-stack
+git clone http://github.com/sync-for-science/pilot-prep
+cd pilot-prep
 docker-compose pull
 
 # This creates the `../secret` directory for sensitive configuration settings
