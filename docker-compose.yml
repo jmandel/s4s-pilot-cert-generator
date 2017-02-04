@@ -5,6 +5,7 @@ services:
     image: nginx
     restart: always
     ports:
+      # bind to loopback only to keep this locked down
       - "127.0.0.1:443:443"
     volumes:
       - ./config/proxy/certs:/etc/nginx/certs
