@@ -11,9 +11,9 @@ The two apps are configured to run at:
  * `https://test-suite.pilot-prep.syncfor.science`
 
 — but these domains have no public DNS records. This configuration ensures the
-apps can only be accessed from a machine:
+apps can only be accessed from a machine with:
 
-1. Running pilot stack installed locally
+1. Pilot stack running locally
 2. Pilot app hostnames and SSL certificates configured locally
 3. OAuth secrets and test account credentials available locally
 
