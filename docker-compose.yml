@@ -2,14 +2,13 @@ version: '2'
 
 services:
   proxy:
-    image: pixelfordinner/nginx
+    image: nginx
     restart: always
     ports:
-      - "80:80"
+      - "127.0.0.1:443:443"
     volumes:
-      - ./config/proxy/conf:/etc/nginx/conf.d
-      - ./config/proxy/vhost:/etc/nginx/vhost.d:ro
-      - ./config/proxy/certs:/etc/nginx/certs:ro
+      - ./config/proxy/certs:/etc/nginx/certs
+      - ./config/proxy/conf.d:/etc/nginx/conf.d
   app:
     image: syncforscience/reference-app
     environment:
