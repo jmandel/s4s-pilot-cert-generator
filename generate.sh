@@ -1,4 +1,4 @@
-docker build . -t certs-from-rackspace
+docker build src -t certs-from-rackspace
 source  ~/Private/rackspace/environment
 docker run --rm -it \
   -e DOMAINS="pilot-secure-demo-app.syncfor.science pilot-secure-test-suite.syncfor.science" \

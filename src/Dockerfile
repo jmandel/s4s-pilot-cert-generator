@@ -6,9 +6,10 @@ RUN git clone https://github.com/lukas2511/dehydrated && \
     git clone https://github.com/major/letsencrypt-rackspace-hook.git hooks/rackspace && \
     pip install -r hooks/rackspace/requirements.txt
 
-ENV PYRAX_CREDS=/.pyrax
+ENV PYRAX_CREDS=/dehydrated/.pyrax
+WORKDIR /dehydrated
 
-ADD run
-RUN chmod +x /run
+ADD run .
+RUN chmod +x run
 
-CMD /run
+CMD /dehydrated/run
