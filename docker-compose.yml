@@ -4,6 +4,9 @@ services:
   proxy:
     image: nginx
     restart: always
+    depends_on:
+      - tests
+      - app
     ports:
       # bind to loopback only to keep this locked down
       - "127.0.0.1:443:443"
