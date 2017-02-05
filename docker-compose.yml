@@ -16,7 +16,7 @@ services:
   app:
     image: syncforscience/reference-app
     environment:
-     - SYNCHRONIZER_HOST="http://research-app-api:5000"
+     - SYNCHRONIZER_HOST=http://research-app-api:5000
     volumes:
      - ./config/app/fixtures.yml:/usr/src/app/researchapp/fixtures.yml
   api:
