@@ -7,8 +7,8 @@ Everything runs on a dedicated PC where secrets can be guarded.
 ## Architecture
 
 The two apps are configured to run at:
- * `https://demo-app.pilot-prep.syncfor.science`
- * `https://test-suite.pilot-prep.syncfor.science`
+ * `https://demo-app.pilot-prep-insecure.syncfor.science`
+ * `https://test-suite.pilot-prep-insecure.syncfor.science`
 
 — but these domains have no public DNS records. This configuration ensures the
 apps can only be accessed from a machine:
@@ -41,14 +41,14 @@ To conduct S4S pilot site tests, launch the stack via:
 docker-compose up
 ```
 
-Then open a web browser to: https://demo-app.pilot-prep.syncfor.science and
-https://test-suite.pilot-prep.syncfor.science
+Then open a web browser to: https://demo-app.pilot-prep-insecure.syncfor.science and
+https://test-suite.pilot-prep-insecure.syncfor.science
 
 ## Setup
 
 First, add the two apps to `/etc/hosts`:
 
-    127.0.0.1   localhost demo-app.pilot-prep.syncfor.science test-suite.pilot-prep.syncfor.science
+    127.0.0.1   localhost demo-app.pilot-prep-insecure.syncfor.science test-suite.pilot-prep-insecure.syncfor.science
 
 ##### Create directories; get code & images
 

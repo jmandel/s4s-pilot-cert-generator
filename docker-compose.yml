@@ -26,6 +26,10 @@ services:
      - hapi.db:/hapi/target
   tests:
     image: syncforscience/reference-tests
+    environment:
+      - BASE_URL=https://test-suite.pilot-prep-insecure.syncfor.science
+      # remove after https://github.com/sync-for-science/test-suite/pull/94 is merged
+      - LETSENCRYPT_HOST=test-suite.pilot-prep-insecure.syncfor.science
     volumes:
       - tests.db:/usr/src/app/testsuite/db
       - ./config/tests/:/usr/src/app/config
