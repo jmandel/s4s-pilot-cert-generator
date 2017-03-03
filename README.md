@@ -75,6 +75,11 @@ cd pilot-prep
 docker-compose pull
 
 # This creates the `../secret` directory for sensitive configuration settings
+
+# Defaults to ~/Dropbox/S4S/secret.tgz.gpg
+./tools/secret-import.sh
+
+# Or specify a path directly
 ./tools/secret-import.sh /path/to/secret.tgz.gpg
 ```
 

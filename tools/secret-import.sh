@@ -2,6 +2,6 @@
 
 set -e
 
-gpg -d $1 > ../secret.tgz
+gpg --output ../secret.tgz ${1:-~/Dropbox/S4S/secret.tgz.gpg}
 tar  -xzvf ../secret.tgz  -C ..
 rm ../secret.tgz
