@@ -26,6 +26,8 @@ services:
      - hapi.db:/hapi/target
   tests:
     image: syncforscience/reference-tests
+    environment:
+     - BASE_URL=https://test-suite.pilot-prep.syncfor.science
     volumes:
       - tests.db:/usr/src/app/testsuite/db
       - ./config/tests/:/usr/src/app/config

@@ -17,7 +17,7 @@ apps can only be accessed from a machine with:
 2. Pilot app hostnames and SSL certificates configured locally
 3. OAuth secrets and test account credentials available locally
 
-**From the perspective of an S4S-enabled EHR, these looks like normal apps.**
+**From the perspective of an S4S-enabled EHR, these look like normal apps.**
 
 For security purposes, this configuration allows us to conduct tests from a
 self-contained environment without relying on third-party hosting.  Secrets are
@@ -48,12 +48,14 @@ https://test-suite.pilot-prep.syncfor.science
 
 First, add the two apps to `/etc/hosts`:
 
-    127.0.0.1   localhost demo-app.pilot-prep.syncfor.science test-suite.pilot-prep.syncfor.science
+```
+127.0.0.1   localhost demo-app.pilot-prep.syncfor.science test-suite.pilot-prep.syncfor.science
+```
 
 ##### Create directories; get code & images
 
-Note: before this step you must obtain (out of band!) `secret.tgz.gpg` and a
-suitable decryption key or passphrase.
+Note: before this step you must obtain (out of band!) `secret.tgz.gpg` and 
+ensure that you have the neccessary gpg private key in your keyring.
 
 These instructions create a directory structure where an `s4s` directory
 contains:
@@ -76,11 +78,11 @@ docker-compose pull
 
 # This creates the `../secret` directory for sensitive configuration settings
 
-# Defaults to ~/Dropbox/S4S/secret.tgz.gpg
-./tools/secret-import.sh
-
 # Or specify a path directly
 ./tools/secret-import.sh /path/to/secret.tgz.gpg
+
+# Defaults to ~/Dropbox/S4S/secret.tgz.gpg if no path is supplied
+./tools/secret-import.sh
 ```
 
 ##### Generate SSL certificates (if needed)
@@ -100,3 +102,7 @@ Then you can regenerate certificates via:
 ```shell
 ./tools/generate-certs.sh
 ```
+
+Note: this process uses Rackspace DNS to respond to an ACME challenge. It's not
+100% reliable (if it fails, run it again — we're not investigating because the
+test period is short enough that we should never need to regnerate anyway).
