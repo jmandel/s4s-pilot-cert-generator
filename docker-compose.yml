@@ -14,25 +14,25 @@ services:
       - ./config/proxy/certs:/etc/nginx/certs
       - ./config/proxy/conf.d:/etc/nginx/conf.d
   app:
-    image: syncforscience/reference-app
+    image: syncforscience/reference-app:v0.3.1
     environment:
      - SYNCHRONIZER_HOST=http://research-app-api:5000
     volumes:
      - ./config/app/fixtures.yml:/usr/src/app/researchapp/fixtures.yml
   api:
-    image: syncforscience/reference-api
+    image: syncforscience/reference-api:v0.3.1
     restart: always
     volumes:
      - hapi.db:/hapi/target
   tests:
-    image: syncforscience/reference-tests
+    image: syncforscience/reference-tests:v0.3.1
     environment:
      - BASE_URL=https://test-suite.pilot-prep.syncfor.science
     volumes:
       - tests.db:/usr/src/app/testsuite/db
       - ./config/tests/:/usr/src/app/config
   research-app-api:
-    image: syncforscience/research-app-api
+    image: syncforscience/research-app-api:v0.3.1
     volumes:
       - research-app-api.db:/usr/src/app/research_app/db
       - ./config/research-app-api/providers.yml:/usr/src/app/providers.yml
