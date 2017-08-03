@@ -29,7 +29,7 @@ services:
     environment:
      - BASE_URL=https://test-suite.pilot-prep.syncfor.science
     volumes:
-      - tests.db:/usr/src/app/testsuite/db
+      - tests.db:/db
       - ./config/tests/:/usr/src/app/config
   research-app-api:
     image: syncforscience/research-app-api:latest
