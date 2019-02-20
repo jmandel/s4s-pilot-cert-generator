@@ -28,6 +28,9 @@ services:
     image: syncforscience/reference-tests:latest
     environment:
      - BASE_URL=https://test-suite.pilot-prep.syncfor.science
+     - API_SERVER_DSTU2=http://api:8080/baseDstu2
+     - API_SERVER_STU3=http://api-stu3:8080/baseDstu3
+     - BLOOM_FILTER_URL=https://s3.amazonaws.com/fhir-code-validation/codes.bf
     volumes:
       - tests.db:/usr/src/app/testsuite/db
       - ./config/tests/:/usr/src/app/config
